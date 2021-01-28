@@ -7,8 +7,6 @@ public class CycleEntry extends Entry {
     private Calendar dateAndTime;
     private float distance;
 
-    public CycleEntry() {super();}
-
     public CycleEntry(String n, int d, int m, int y, int h, int min, int s, float dist) {
         super();
         name = n;
@@ -17,4 +15,5 @@ public class CycleEntry extends Entry {
         dateAndTime = inst;
         distance = dist;
     } //constructor
+
 }
