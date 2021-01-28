@@ -30,6 +30,17 @@ public class TrainingRecord {
             }
        return result;
    } // lookupEntry
+
+    public String[] findAllEntries(int d, int m, int y) {
+        ListIterator<Entry> iter = tr.listIterator();
+        String[] allEntries = new String[tr.size()];
+        for(int i = 0; i < allEntries.length; i++) {
+            Entry current = iter.next();
+            if (current.getDay() == d && current.getMonth() == m && current.getYear() == y)
+                allEntries[i] = current.getEntry();
+        }
+        return allEntries;
+    }
    
    // Count the number of entries
    public int getNumberOfEntries(){
