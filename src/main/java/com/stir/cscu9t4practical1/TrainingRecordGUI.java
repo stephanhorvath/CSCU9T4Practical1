@@ -91,7 +91,8 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         String message = "";
         if (event.getSource() == addR) {
-            message = addEntry("generic");
+            String type = (String) entryType.getSelectedItem();
+            message = addEntry(type);
         }
         if (event.getSource() == lookUpByDate) {
             message = lookupEntry();
@@ -116,7 +117,7 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         int h = Integer.parseInt(hours.getText());
         int mm = Integer.parseInt(mins.getText());
         int s = Integer.parseInt(secs.getText());
-        Entry e = new Entry(n, d, m, y, h, mm, s, km);
+        Entry e = entryTypeGenerator(n, m, d, y, km, h, mm, s);
         myAthletes.addEntry(e);
         return message;
     }
@@ -164,6 +165,18 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         mins.setText(String.valueOf(ent.getMin()));
         secs.setText(String.valueOf(ent.getSec()));
         dist.setText(String.valueOf(ent.getDistance()));
+    }
+
+    public Entry entryTypeGenerator(String n, int m, int d, int y, float km, int h, int mm, int s) {
+        Entry entry;
+        if (entryType.getSelectedItem().equals("Cycle")) {
+            entry = new CycleEntry(n, d, m, y, h, mm, s, km);
+        } else if (entryType.getSelectedItem().equals("Sprint")) {
+            entry = new SprintEntry(n, d, m, y, h, mm, s, km);
+        } else {
+            entry = new SwimEntry(n, d, m, y, h, mm, s, km);
+        }
+        return entry;
     }
 
 } // TrainingRecordGUI
