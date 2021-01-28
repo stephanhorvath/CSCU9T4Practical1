@@ -9,6 +9,8 @@ import java.lang.Number;
 
 public class TrainingRecordGUI extends JFrame implements ActionListener {
 
+    String[] entryTypes = {"Cycle", "Sprint", "Swim"};
+
     private JTextField name = new JTextField(30);
     private JTextField day = new JTextField(2);
     private JTextField month = new JTextField(2);
@@ -17,6 +19,7 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     private JTextField mins = new JTextField(2);
     private JTextField secs = new JTextField(2);
     private JTextField dist = new JTextField(4);
+    private JComboBox entryType = new JComboBox(entryTypes);
     private JLabel labn = new JLabel(" Name:");
     private JLabel labd = new JLabel(" Day:");
     private JLabel labm = new JLabel(" Month:");
@@ -65,6 +68,8 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         add(labdist);
         add(dist);
         dist.setEditable(true);
+        add(entryType);
+        entryType.setEditable(true);
         add(addR);
         addR.addActionListener(this);
         add(lookUpByDate);
