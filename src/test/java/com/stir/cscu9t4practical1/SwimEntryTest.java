@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ *//*
+
 package com.stir.cscu9t4practical1;
 
 import org.junit.jupiter.api.AfterEach;
@@ -11,10 +12,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+*/
 /**
  *
  * @author saemundur
- */
+ *//*
+
 public class SwimEntryTest {
     
     public SwimEntryTest() {
@@ -36,9 +39,11 @@ public class SwimEntryTest {
     public void tearDown() {
     }
 
-    /**
+    */
+/**
      * Test of getName method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetName() {
         System.out.println("getName");
@@ -48,9 +53,11 @@ public class SwimEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+    */
+/**
      * Test of getDay method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetDay() {
         System.out.println("getDay");
@@ -60,9 +67,11 @@ public class SwimEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+    */
+/**
      * Test of getMonth method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetMonth() {
         System.out.println("getMonth");
@@ -72,9 +81,11 @@ public class SwimEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+    */
+/**
      * Test of getYear method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetYear() {
         System.out.println("getYear");
@@ -84,9 +95,11 @@ public class SwimEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+    */
+/**
      * Test of getHour method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetHour() {
         System.out.println("getHour");
@@ -96,9 +109,11 @@ public class SwimEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+    */
+/**
      * Test of getMin method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetMin() {
         System.out.println("getMin");
@@ -108,9 +123,11 @@ public class SwimEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+    */
+/**
      * Test of getSec method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetSec() {
         System.out.println("getSec");
@@ -120,9 +137,11 @@ public class SwimEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+    */
+/**
      * Test of getDistance method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetDistance() {
         System.out.println("getDistance");
@@ -132,9 +151,11 @@ public class SwimEntryTest {
         assertEquals(expResult, result, 0.0);
     }
     
-    /**
+    */
+/**
      * Test of getWhere method, of class SwimEntry
-     */
+     *//*
+
     @Test
     public void testGetWhere() {
         System.out.println("getWhere");
@@ -148,9 +169,11 @@ public class SwimEntryTest {
         String result = instanceB.getWhere();
         assertEquals(expResultB, result);
     }
-    /**
+    */
+/**
      * Test of getEntry method, of class SwimEntry.
-     */
+     *//*
+
     @Test
     public void testGetEntry() {
         System.out.println("getEntry");
@@ -160,4 +183,4 @@ public class SwimEntryTest {
         assertEquals(expResult, result);
     }
     
-}
+}*/

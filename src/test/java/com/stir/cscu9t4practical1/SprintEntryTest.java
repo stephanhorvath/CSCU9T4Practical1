@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+
+
 package com.stir.cscu9t4practical1;
 
 import org.junit.jupiter.api.AfterEach;
@@ -11,10 +12,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-/**
+*
  *
  * @author saemundur
- */
+
+
 public class SprintEntryTest {
     
     public SprintEntryTest() {
@@ -36,9 +38,10 @@ public class SprintEntryTest {
     public void tearDown() {
     }
 
-    /**
+*
      * Test of getName method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetName() {
         System.out.println("getName");
@@ -48,9 +51,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+*
      * Test of getDay method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetDay() {
         System.out.println("getDay");
@@ -60,9 +64,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+*
      * Test of getMonth method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetMonth() {
         System.out.println("getMonth");
@@ -72,9 +77,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+*
      * Test of getYear method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetYear() {
         System.out.println("getYear");
@@ -84,9 +90,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+*
      * Test of getHour method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetHour() {
         System.out.println("getHour");
@@ -96,9 +103,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+*
      * Test of getMin method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetMin() {
         System.out.println("getMin");
@@ -108,9 +116,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+*
      * Test of getSec method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetSec() {
         System.out.println("getSec");
@@ -120,9 +129,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+*
      * Test of getDistance method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetDistance() {
         System.out.println("getDistance");
@@ -132,9 +142,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result, 0.0);
     }
     
-    /**
+*
      * Test of getRepetitions method of class SprintEntry
-     */
+
+
     @Test
     public void testGetRepetitions() {
         System.out.println("getRepetitions");
@@ -144,9 +155,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
     
-    /**
+*
      * Test of getRecovery method of class SprintEntry
-     */
+
+
     @Test
     public void testGetRecovery() {
         System.out.println("getRepetitions");
@@ -156,9 +168,10 @@ public class SprintEntryTest {
         assertEquals(expResult, result);
     }
 
-    /**
+*
      * Test of getEntry method, of class SprintEntry.
-     */
+
+
     @Test
     public void testGetEntry() {
         System.out.println("getEntry");
@@ -169,3 +182,4 @@ public class SprintEntryTest {
     }
     
 }
+*/
