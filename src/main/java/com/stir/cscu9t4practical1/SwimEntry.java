@@ -10,11 +10,18 @@ public class SwimEntry extends Entry {
     public SwimEntry() {};
 
     public SwimEntry(String n, int d, int m, int y, int h, int min, int s, float dist) {
-        super();
-        name = n;
-        Calendar inst = Calendar.getInstance();
-        inst.set(y, m-1, d, h, min, s);
-        dateAndTime = inst;
-        distance = dist;
+        super(n, d, m, y, h, min, s, dist);
+        // name = n;
+        // Calendar inst = Calendar.getInstance();
+        // inst.set(y, m-1, d, h, min, s);
+        // dateAndTime = inst;
+        // distance = dist;
     }
+
+    public String getEntry () {
+        String result = getName()+" swam for " + getDistance() + " km in "
+                +getHour()+":"+getMin()+":"+ getSec() + " on "
+                +getDay()+"/"+getMonth()+"/"+getYear()+"\n";
+        return result;
+    } //getEntry
 }
