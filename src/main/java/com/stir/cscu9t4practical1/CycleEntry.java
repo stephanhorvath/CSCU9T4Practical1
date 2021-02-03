@@ -3,9 +3,6 @@ package com.stir.cscu9t4practical1;
 import java.util.Calendar;
 
 public class CycleEntry extends Entry {
-    private String name;
-    private Calendar dateAndTime;
-    private float distance;
 
     public CycleEntry(String n, int d, int m, int y, int h, int min, int s, float dist) {
         super(n, d, m, y, h, min, s, dist);
@@ -17,9 +14,9 @@ public class CycleEntry extends Entry {
     } //constructor
 
     public String getEntry () {
-        String result = getName()+" cycled " + getDistance() + " km in "
-                +getHour()+":"+getMin()+":"+ getSec() + " on "
-                +getDay()+"/"+getMonth()+"/"+getYear()+"\n";
+        String result = this.getName()+" cycled " + this.getDistance() + " km in "
+                +this.getHour()+":"+this.getMin()+":"+ this.getSec() + " on "
+                +this.getDay()+"/"+this.getMonth()+"/"+this.getYear()+"\n";
         return result;
     } //getEntry
 

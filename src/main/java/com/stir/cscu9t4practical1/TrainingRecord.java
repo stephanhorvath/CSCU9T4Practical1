@@ -28,6 +28,17 @@ public class TrainingRecord {
        return result;
    } // lookupEntry
 
+    public Entry lookupEntry (String n, int d, int m, int y) {
+        ListIterator<Entry> iter = tr.listIterator();
+        while (iter.hasNext()) {
+            Entry current = iter.next();
+            if (current.getName().equals(n) && current.getDay()==d && current.getMonth()==m && current.getYear()==y) {
+                return current;
+            }
+        }
+        return null;
+    } // lookupEntry with name
+
     public String[] findAllEntries(int d, int m, int y) {
         ListIterator<Entry> iter = tr.listIterator();
         String[] allEntries = new String[tr.size()];
@@ -37,6 +48,16 @@ public class TrainingRecord {
                 allEntries[i] = current.getEntry();
         }
         return allEntries;
+    }
+
+    public boolean removeEntry(Entry e) {
+        for (int i = 0; i < tr.size(); i++) {
+            if (tr.get(i)==e) {
+                tr.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
    
    // Count the number of entries

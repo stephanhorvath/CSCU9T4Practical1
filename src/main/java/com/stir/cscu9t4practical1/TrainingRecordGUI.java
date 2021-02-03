@@ -104,6 +104,9 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             // message = "Not Implemented Yet";
             message = findAllEntries();
         }
+        if (event.getSource() == removeEntry) {
+            removeEntry();
+        }
 
         outputArea.setText(message);
         blankDisplay();
@@ -145,6 +148,21 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             concatEntries = concatEntries + entries[i] + "\n";
         }
         return concatEntries;
+    }
+
+    public void removeEntry() {
+        String n = name.getText();
+        int m = Integer.parseInt(month.getText());
+        int d = Integer.parseInt(day.getText());
+        int y = Integer.parseInt(year.getText());
+        outputArea.setText("removing entry ...");
+        Entry entryToRemove = myAthletes.lookupEntry(n, d, m, y);
+        boolean success = myAthletes.removeEntry(entryToRemove);
+        if (success) {
+            outputArea.setText("Entry successfully removed.");
+        } else {
+            outputArea.setText("Entry either not found or unable to be removed");
+        }
     }
 
     public void blankDisplay() {
