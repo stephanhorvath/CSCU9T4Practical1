@@ -12,8 +12,19 @@ public class TrainingRecord {
     } //constructor
     
     // add a record to the list
-   public void addEntry(Entry e){
-       tr.add(e);    
+   public boolean addEntry(Entry e){
+        if (tr.size() >= 1) {
+            if (!isExistingEntry(e)) {
+                tr.add(e);
+                return true;
+            } else {
+                System.out.println("Error - entry already exists");
+                return false;
+            }
+        } else {
+            tr.add(e);
+            return true;
+        }
    } // addClass
    
    // look up the entry of a given day and month
@@ -38,6 +49,26 @@ public class TrainingRecord {
         }
         return null;
     } // lookupEntry with name
+
+    public boolean isExistingEntry (Entry existing) {
+        ListIterator<Entry> iter = tr.listIterator();
+        boolean exists = false;
+        while (iter.hasNext()) {
+            Entry current = iter.next();
+            if (current.getName().equals(existing.getName()) &&
+                current.getDay()==existing.getDay() &&
+                current.getMonth()==existing.getMonth() &&
+                current.getYear()==existing.getYear() &&
+                current.getHour()==existing.getHour() &&
+                current.getMin()==existing.getMin() &&
+                current.getSec()==existing.getSec() &&
+                current.getClass()==existing.getClass()) {
+                exists = true;
+                break;
+            }
+        }
+        return exists;
+    } // isExistingEntry
 
     public String[] findAllEntries(int d, int m, int y) {
         ListIterator<Entry> iter = tr.listIterator();

@@ -124,7 +124,12 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         int mm = Integer.parseInt(mins.getText());
         int s = Integer.parseInt(secs.getText());
         Entry e = entryTypeGenerator(n, m, d, y, km, h, mm, s);
-        myAthletes.addEntry(e);
+        boolean success = myAthletes.addEntry(e);
+        if (success) {
+            return message;
+        } else {
+            message = "Record already exists - unable to add";
+        }
         return message;
     }
     
