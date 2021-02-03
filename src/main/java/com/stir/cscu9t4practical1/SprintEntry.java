@@ -3,11 +3,6 @@ package com.stir.cscu9t4practical1;
 import java.util.Calendar;
 
 public class SprintEntry extends Entry {
-    private String name;
-    private Calendar dateAndTime;
-    private float distance;
-
-    public SprintEntry() {};
 
     public SprintEntry(String n, int d, int m, int y, int h, int min, int s, float dist) {
         super(n, d, m, y, h, min, s, dist);
