@@ -59,9 +59,6 @@ public class TrainingRecord {
                 current.getDay()==existing.getDay() &&
                 current.getMonth()==existing.getMonth() &&
                 current.getYear()==existing.getYear() &&
-                current.getHour()==existing.getHour() &&
-                current.getMin()==existing.getMin() &&
-                current.getSec()==existing.getSec() &&
                 current.getClass()==existing.getClass()) {
                 exists = true;
                 break;
