@@ -18,7 +18,7 @@ public class SprintEntry extends Entry {
 //        String expResult = "Alice sprinted 4x300m in 0:16:7 with 2 minutes recovery on 1/2/2003\n";
 
     public String getEntry () {
-        String result = getName() +" sprinted for " + getRepetitions() + "x" + (int)getDistance() + "m in "
+        String result = getName() +" sprinted " + getRepetitions() + "x" + (int)getDistance() + "m in "
                 +getHour()+":"+getMin()+":"+ getSec() + " with " + getRecovery() + " minutes recovery on "
                 +getDay()+"/"+getMonth()+"/"+getYear()+"\n";
         return result;

@@ -46,9 +46,7 @@ public class Entry {
     return dateAndTime.get(Calendar.SECOND);
   } //getSec
 
-  public float getDistance () {
-    return distance;
-  } //getYear
+  public float getDistance () { return distance; } //getDistance
 
   public String getEntry () {
    String result = getName()+" ran " + getDistance() + " km in "

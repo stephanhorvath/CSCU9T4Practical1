@@ -17,7 +17,7 @@ public class SwimEntry extends Entry {
 //        String expResult = "Alice swam 3.0 km outdoors in 0:16:7 on 1/2/2003\n";
 
     public String getEntry () {
-        String result = getName()+" swam for " + getDistance() + " km " + getWhere() + " in "
+        String result = getName()+" swam " + getDistance() + " km " + getWhere() + " in "
                 +getHour()+":"+getMin()+":"+ getSec() + " on "
                 +getDay()+"/"+getMonth()+"/"+getYear()+"\n";
         return result;
