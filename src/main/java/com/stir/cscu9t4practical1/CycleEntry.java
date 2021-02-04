@@ -15,11 +15,12 @@ public class CycleEntry extends Entry {
         tempo = t;
     } //constructor
 
+    //        String expResult = "Alice cycled 3.0 km in 0:16:7 on 1/2/2003 on asphalt at moderate tempo\n";
     public String getEntry () {
-        String result = this.getName()+" cycled " + this.getDistance() + " km over "
-                +this.getTerrain() + " with a " + this.getTempo() + " tempo, in "
+        String result = this.getName()+" cycled " + this.getDistance() + " km in "
                 +this.getHour()+":"+this.getMin()+":"+ this.getSec() + " on "
-                +this.getDay()+"/"+this.getMonth()+"/"+this.getYear()+"\n";
+                +this.getDay()+"/"+this.getMonth()+"/"+this.getYear()+" on "
+                + getTerrain() + " at " + getTempo() + " tempo\n";
         return result;
     } //getEntry
 

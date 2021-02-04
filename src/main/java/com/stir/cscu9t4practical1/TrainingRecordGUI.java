@@ -55,6 +55,8 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     public TrainingRecordGUI() {
         super("Training Record");
         setLayout(new FlowLayout());
+        add(entryType);
+        entryType.addActionListener(this);
         add(labn);
         add(name);
         name.setEditable(true);
@@ -91,8 +93,6 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         rec.setEditable(true);
         labrec.setVisible(false);
         rec.setVisible(false);
-        add(entryType);
-        entryType.addActionListener(this);
         add(where);
         where.setVisible(false);
         add(addR);
@@ -138,12 +138,14 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
                 labrec.setVisible(false);
                 rec.setVisible(false);
                 where.setVisible(false);
+                labdist.setText("Distance (km):");
                 terrainType.setVisible(true);
                 tempoType.setVisible(true);
             } else if (entryType.getSelectedItem().equals("Sprint")) {
                 terrainType.setVisible(false);
                 tempoType.setVisible(false);
                 where.setVisible(false);
+                labdist.setText("Distance (m):");
                 labrep.setVisible(true);
                 rep.setVisible(true);
                 labrec.setVisible(true);
@@ -155,6 +157,7 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
                 rec.setVisible(false);
                 terrainType.setVisible(false);
                 tempoType.setVisible(false);
+                labdist.setText("Distance (km):");
                 where.setVisible(true);
 
             }
