@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.stir.cscu9t4practical1;
 
 import org.junit.jupiter.api.AfterEach;
@@ -17,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author saemundur
  */
 
-/*
+
 public class CycleEntryTest {
     
     public CycleEntryTest() {
@@ -42,7 +37,7 @@ public class CycleEntryTest {
     /**
      * Test of getName method, of class CycleEntry.
      */
-/*
+
     @Test
     public void testGetName() {
         System.out.println("getName");
@@ -52,12 +47,11 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
- */
 
     /**
      * Test of getDay method, of class CycleEntry.
      */
-    /*
+
     @Test
     public void testGetDay() {
         System.out.println("getDay");
@@ -67,12 +61,10 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
-     */
-
-    /**
+/**
      * Test of getMonth method, of class CycleEntry.
      */
-    /*
+
     @Test
     public void testGetMonth() {
         System.out.println("getMonth");
@@ -82,12 +74,10 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
-     */
-
-    /**
+/**
      * Test of getYear method, of class CycleEntry.
      */
-    /*
+
     @Test
     public void testGetYear() {
         System.out.println("getYear");
@@ -97,12 +87,10 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
-     */
-
-    /**
+/**
      * Test of getHour method, of class CycleEntry.
      */
-    /*
+
     @Test
     public void testGetHour() {
         System.out.println("getHour");
@@ -112,12 +100,10 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
-     */
-
-    /**
+/**
      * Test of getMin method, of class CycleEntry.
      */
-    /*
+
     @Test
     public void testGetMin() {
         System.out.println("getMin");
@@ -127,12 +113,10 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
-     */
-
-    /**
+/**
      * Test of getSec method, of class CycleEntry.
      */
-    /*
+
     @Test
     public void testGetSec() {
         System.out.println("getSec");
@@ -141,12 +125,10 @@ public class CycleEntryTest {
         int result = instance.getSec();
         assertEquals(expResult, result);
     }
-     */
 
-    /**
+/**
      * Test of getDistance method, of class CycleEntry.
      */
-    /*
     @Test
     public void testGetDistance() {
         System.out.println("getDistance");
@@ -156,12 +138,9 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
-     */
-    
-    /**
+/**
      * Test of getTerrain method, of class CycleEntry.
      */
-    /*
     @Test
     public void testGetTerrain() {
         System.out.println("getTerrain");
@@ -171,12 +150,9 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
-     */
-
-    /**
+/**
      * Test of getTempo method, of class CycleEntry.
      */
-    /*
     @Test
     public void testGetTempo() {
         System.out.println("getTempo");
@@ -186,12 +162,9 @@ public class CycleEntryTest {
         assertEquals(expResult, result);
     }
 
-     */
-    
-    /**
+/**
      * Test of getEntry method, of class CycleEntry.
      */
-    /*
     @Test
     public void testGetEntry() {
         System.out.println("getEntry");
@@ -202,4 +175,4 @@ public class CycleEntryTest {
     }
     
 }
-*/
+
