@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 public class SwimEntry extends Entry {
 
+    // additional variables for the swimming entries
     private String where;
 
     public String getWhere() { return where; }
@@ -13,9 +14,7 @@ public class SwimEntry extends Entry {
         where = w;
     }
 
-
-//        String expResult = "Alice swam 3.0 km outdoors in 0:16:7 on 1/2/2003\n";
-
+    // re-define the getEntry to use the additional variable
     public String getEntry () {
         String result = getName()+" swam " + getDistance() + " km " + getWhere() + " in "
                 +getHour()+":"+getMin()+":"+ getSec() + " on "
