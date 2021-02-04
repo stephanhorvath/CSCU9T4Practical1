@@ -3,14 +3,16 @@ package com.stir.cscu9t4practical1;
 import java.util.Calendar;
 
 public class SprintEntry extends Entry {
+    private int repetitions;
+    private int recovery;
 
-    public SprintEntry(String n, int d, int m, int y, int h, int min, int s, float dist) {
+    public int getRepetitions() { return repetitions; }
+    public int getRecovery() { return recovery; }
+
+    public SprintEntry(String n, int d, int m, int y, int h, int min, int s, float dist, int rep, int rec) {
         super(n, d, m, y, h, min, s, dist);
-        // name = n;
-        // Calendar inst = Calendar.getInstance();
-        // inst.set(y,m-1,d,h,min,s);
-        // dateAndTime = inst;
-        // distance = dist;
+        repetitions = rep;
+        recovery = rec;
     } //constructor
 
     public String getEntry () {

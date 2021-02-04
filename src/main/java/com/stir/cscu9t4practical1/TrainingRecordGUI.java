@@ -10,6 +10,9 @@ import java.lang.Number;
 public class TrainingRecordGUI extends JFrame implements ActionListener {
 
     String[] entryTypes = {"Cycle", "Sprint", "Swim"};
+    String[] terrainTypes = {"dirt", "asphalt", "track" };
+    String[] tempoTypes = {"easy", "moderate", "intense"};
+    String[] whereOptions = {"pool", "outdoors"};
 
     private JTextField name = new JTextField(30);
     private JTextField day = new JTextField(2);
@@ -19,7 +22,12 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     private JTextField mins = new JTextField(2);
     private JTextField secs = new JTextField(2);
     private JTextField dist = new JTextField(4);
+    private JTextField rep = new JTextField(2);
+    private JTextField rec = new JTextField(2);
     private JComboBox entryType = new JComboBox(entryTypes);
+    private JComboBox terrainType = new JComboBox(terrainTypes);
+    private JComboBox tempoType = new JComboBox(tempoTypes);
+    private JComboBox where = new JComboBox(whereOptions);
     private JLabel labn = new JLabel(" Name:");
     private JLabel labd = new JLabel(" Day:");
     private JLabel labm = new JLabel(" Month:");
@@ -28,6 +36,8 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     private JLabel labmm = new JLabel(" Mins:");
     private JLabel labs = new JLabel(" Secs:");
     private JLabel labdist = new JLabel(" Distance (km):");
+    private JLabel labrep = new JLabel(" Repetitions :");
+    private JLabel labrec = new JLabel(" Recovery :");
     private JButton addR = new JButton("Add");
     private JButton lookUpByDate = new JButton("Look Up");
     private JButton findAllByDate = new JButton("Find All By Date");
@@ -69,8 +79,22 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         add(labdist);
         add(dist);
         dist.setEditable(true);
+        add(terrainType);
+        add(tempoType);
+        add(labrep);
+        add(rep);
+        rep.setEditable(true);
+        labrep.setVisible(false);
+        rep.setVisible(false);
+        add(labrec);
+        add(rec);
+        rec.setEditable(true);
+        labrec.setVisible(false);
+        rec.setVisible(false);
         add(entryType);
-        entryType.setEditable(true);
+        entryType.addActionListener(this);
+        add(where);
+        where.setVisible(false);
         add(addR);
         addR.addActionListener(this);
         add(lookUpByDate);
@@ -106,6 +130,34 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         }
         if (event.getSource() == removeEntry) {
             removeEntry();
+        }
+        if (event.getSource() == entryType) {
+            if (entryType.getSelectedItem().equals("Cycle")) {
+                labrep.setVisible(false);
+                rep.setVisible(false);
+                labrec.setVisible(false);
+                rec.setVisible(false);
+                where.setVisible(false);
+                terrainType.setVisible(true);
+                tempoType.setVisible(true);
+            } else if (entryType.getSelectedItem().equals("Sprint")) {
+                terrainType.setVisible(false);
+                tempoType.setVisible(false);
+                where.setVisible(false);
+                labrep.setVisible(true);
+                rep.setVisible(true);
+                labrec.setVisible(true);
+                rec.setVisible(true);
+            } else {
+                labrep.setVisible(false);
+                rep.setVisible(false);
+                labrec.setVisible(false);
+                rec.setVisible(false);
+                terrainType.setVisible(false);
+                tempoType.setVisible(false);
+                where.setVisible(true);
+
+            }
         }
 
         outputArea.setText(message);
@@ -196,11 +248,17 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     public Entry entryTypeGenerator(String n, int m, int d, int y, float km, int h, int mm, int s) {
         Entry entry;
         if (entryType.getSelectedItem().equals("Cycle")) {
-            entry = new CycleEntry(n, d, m, y, h, mm, s, km);
+            String terrain = String.valueOf(terrainType.getSelectedItem());
+            String tempo = String.valueOf(tempoType.getSelectedItem());
+            entry = new CycleEntry(n, d, m, y, h, mm, s, km, terrain, tempo);
         } else if (entryType.getSelectedItem().equals("Sprint")) {
-            entry = new SprintEntry(n, d, m, y, h, mm, s, km);
+            int repetitions = Integer.parseInt(rep.getText());
+            int recovery = Integer.parseInt(rec.getText());
+
+            entry = new SprintEntry(n, d, m, y, h, mm, s, km, repetitions, recovery);
         } else {
-            entry = new SwimEntry(n, d, m, y, h, mm, s, km);
+            String w = String.valueOf(where.getSelectedItem());
+            entry = new SwimEntry(n, d, m, y, h, mm, s, km, w);
         }
         return entry;
     }
