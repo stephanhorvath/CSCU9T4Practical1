@@ -277,7 +277,7 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         String n = name.getText();
         Pattern pattern;
         // regex pattern - must start with A-Z and have only a-z and spaces
-        pattern = Pattern.compile("^[A-Z][a-z]*\\s[A-Z][a-z]*$");
+        pattern = Pattern.compile("^([A-Z][a-z]*)\\s?([A-Z][a-z]*)?$");
         if(pattern.matcher(n).matches()) {
             // returns true if name matches regex
             proceed = true;

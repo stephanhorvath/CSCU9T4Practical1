@@ -115,4 +115,52 @@ public class TrainingRecordGUITest {
         }
         assertEquals(found,expectedFields.length,"Have you added all required buttons?");
     }
+
+    /**
+     * Test name validation with just one name
+     */
+    @Test
+    public void testOnlyNameValidator() {
+        System.out.println("nameValidator");
+        TrainingRecordGUI instance = new TrainingRecordGUI();
+        Entry entry = new Entry("Alice", 1, 2, 2003, 0, 16, 7, 3);
+        instance.fillDisplay(entry);
+        assertTrue(instance.nameValidator());
+    }
+
+    /**
+     * Test name validation with name and surname
+     */
+    @Test
+    public void testNameSurnameValidator() {
+        System.out.println("nameValidator with surname");
+        TrainingRecordGUI instance = new TrainingRecordGUI();
+        Entry entry = new Entry("Alice Johnson", 1, 2, 2003, 0, 16, 7, 3);
+        instance.fillDisplay(entry);
+        assertTrue(instance.nameValidator());
+    }
+
+    /**
+     * Test name validation with numbers in name field
+     */
+    @Test
+    public void testNameNumbersValidator() {
+        System.out.println("nameValidator with numbers");
+        TrainingRecordGUI instance = new TrainingRecordGUI();
+        Entry entry = new Entry("123123", 1, 2, 2003, 0, 16, 7, 3);
+        instance.fillDisplay(entry);
+        assertFalse(instance.nameValidator());
+    }
+
+    /**
+     * Test name validation with empty field
+     */
+    @Test
+    public void testNameNullValidator() {
+        System.out.println("nameValidator with empty field");
+        TrainingRecordGUI instance = new TrainingRecordGUI();
+        Entry entry = new Entry("", 1, 2, 2003, 0, 16, 7, 3);
+        instance.fillDisplay(entry);
+        assertFalse(instance.nameValidator());
+    }
 }
