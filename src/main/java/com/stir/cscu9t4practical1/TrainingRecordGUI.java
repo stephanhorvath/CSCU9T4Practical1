@@ -121,10 +121,10 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         if (event.getSource() == addR) {
             String type = (String) entryType.getSelectedItem();
             // call nameValidator to match with valid regex
-            if(nameValidator() && timeValidator()) {
+            if(nameValidator() && timeValidator() && dateValidator()) {
                 message = addEntry(type);
             } else {
-                message = "Invalid Name";
+                message = "Invalid Input, please try again";
             }
         }
         if (event.getSource() == lookUpByDate) {
@@ -302,7 +302,30 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             proceed = true;
             return proceed;
         }
-        // return false if name does not match regex
+        // return false if numbers do not match regex
+        return proceed;
+    }
+
+    public boolean dateValidator() {
+        boolean proceed = false;
+        String d = day.getText();
+        String m = month.getText();
+        String y = year.getText();
+        Pattern patternDay;
+        Pattern patternMonth;
+        Pattern patternYear;
+        // match might have preceding 0, from 1 to 9, 1st digit 1 OR 2, 2nd digit 0 to 9, or 30 OR 31
+        patternDay = Pattern.compile("^(0?[1-9]|[12][0-9]|3[01])$");
+        // match might have preceding 0, from 1 to 9, 1st digit 1, 2nd digit 0 to 2
+        patternMonth = Pattern.compile("^(0?[1-9]|1[0-2])$");
+        // match 19 or 20, followed by two of 0 to 9
+        patternYear = Pattern.compile("^(?:19|20)[0-9]{2}$");
+        if(patternDay.matcher(d).matches() && patternMonth.matcher(m).matches() && patternYear.matcher(y).matches()) {
+            // returns true if each pattern matches valid range
+            proceed = true;
+            return proceed;
+        }
+        // return false if dates do not match regex
         return proceed;
     }
 
