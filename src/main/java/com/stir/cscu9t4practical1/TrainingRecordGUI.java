@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 import java.lang.Number;
+import java.util.regex.Pattern;
 
 public class TrainingRecordGUI extends JFrame implements ActionListener {
 
@@ -119,7 +120,12 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         String message = "";
         if (event.getSource() == addR) {
             String type = (String) entryType.getSelectedItem();
-            message = addEntry(type);
+            // call nameValidator to match with valid regex
+            if(nameValidator()) {
+                message = addEntry(type);
+            } else {
+                message = "Invalid Name";
+            }
         }
         if (event.getSource() == lookUpByDate) {
             message = lookupEntry();
@@ -264,6 +270,20 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             entry = new SwimEntry(n, d, m, y, h, mm, s, km, w);
         }
         return entry;
+    }
+
+    public boolean nameValidator() {
+        boolean proceed = false;
+        String n = name.getText();
+        Pattern pattern;
+        // regex pattern - must start with A-Z and have only a-z and spaces
+        pattern = Pattern.compile("^[A-Z][a-z]*\\s[A-Z][a-z]*$");
+        if(pattern.matcher(n).matches()) {
+            proceed = true;
+            return proceed;
+        }
+        outputArea.setText("Error - invalid input in name area");
+        return proceed;
     }
 
 } // TrainingRecordGUI
