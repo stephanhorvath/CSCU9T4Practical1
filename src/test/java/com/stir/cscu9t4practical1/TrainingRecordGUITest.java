@@ -163,4 +163,5 @@ public class TrainingRecordGUITest {
         instance.fillDisplay(entry);
         assertFalse(instance.nameValidator());
     }
+
 }

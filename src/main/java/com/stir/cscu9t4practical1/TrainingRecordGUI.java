@@ -100,10 +100,13 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         addR.addActionListener(this);
         add(lookUpByDate);
         lookUpByDate.addActionListener(this);
+        lookUpByDate.setEnabled(false);
         add(findAllByDate);
         findAllByDate.addActionListener(this);
+        findAllByDate.setEnabled(false);
         add(removeEntry);
         removeEntry.addActionListener(this);
+        removeEntry.setEnabled(false);
         add(outputArea);
         outputArea.setEditable(false);
         setSize(720, 200);
@@ -123,6 +126,9 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             // call nameValidator to match with valid regex
             if(nameValidator() && timeValidator() && dateValidator()) {
                 message = addEntry(type);
+                lookUpByDate.setEnabled(true);
+                findAllByDate.setEnabled(true);
+                removeEntry.setEnabled(true);
             } else {
                 message = "Invalid Input, please try again";
             }
@@ -131,11 +137,16 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             message = lookupEntry();
         }
         if (event.getSource() == findAllByDate) {
-            // message = "Not Implemented Yet";
             message = findAllEntries();
         }
         if (event.getSource() == removeEntry) {
             removeEntry();
+            if (myAthletes.getNumberOfEntries() == 0) {
+                lookUpByDate.setEnabled(false);
+                findAllByDate.setEnabled(false);
+                removeEntry.setEnabled(false);
+                message = "No entries available";
+            }
         }
         if (event.getSource() == entryType) {
             if (entryType.getSelectedItem().equals("Cycle")) {
