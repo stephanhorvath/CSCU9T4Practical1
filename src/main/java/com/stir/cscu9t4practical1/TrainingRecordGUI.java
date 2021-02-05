@@ -121,7 +121,7 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         if (event.getSource() == addR) {
             String type = (String) entryType.getSelectedItem();
             // call nameValidator to match with valid regex
-            if(nameValidator()) {
+            if(nameValidator() && timeValidator()) {
                 message = addEntry(type);
             } else {
                 message = "Invalid Name";
@@ -279,10 +279,30 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         // regex pattern - must start with A-Z and have only a-z and spaces
         pattern = Pattern.compile("^[A-Z][a-z]*\\s[A-Z][a-z]*$");
         if(pattern.matcher(n).matches()) {
+            // returns true if name matches regex
             proceed = true;
             return proceed;
         }
-        outputArea.setText("Error - invalid input in name area");
+        // return false if name does not match regex
+        return proceed;
+    }
+
+    public boolean timeValidator() {
+        boolean proceed = false;
+        String h = hours.getText();
+        String m = mins.getText();
+        String s = secs.getText();
+        Pattern pattern;
+        // regex pattern - match the boundary starting from 0 to 9,
+        // then from [0 to 5] first digit followed  by [0 to 9] second digit,
+        // in case someone inputs 0, 00 up to 59, and finally 60
+        pattern = Pattern.compile("([0-9]|[0-5][0-9]|60)");
+        if(pattern.matcher(h).matches() && pattern.matcher(m).matches() && pattern.matcher(s).matches()) {
+            // returns true if name matches regex
+            proceed = true;
+            return proceed;
+        }
+        // return false if name does not match regex
         return proceed;
     }
 
