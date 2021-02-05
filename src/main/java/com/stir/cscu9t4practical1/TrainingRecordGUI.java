@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 public class TrainingRecordGUI extends JFrame implements ActionListener {
 
+    // string arrays for combobox options
     String[] entryTypes = {"Cycle", "Sprint", "Swim"};
     String[] terrainTypes = {"dirt", "asphalt", "track" };
     String[] tempoTypes = {"easy", "moderate", "intense"};
@@ -123,13 +124,17 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         String message = "";
         if (event.getSource() == addR) {
             String type = (String) entryType.getSelectedItem();
-            // call nameValidator to match with valid regex
+            // call nameValidator to match with valid regex before being sent to addEntry
+            // call timeValidator to match with valid regex before being sent to addEntry
+            // call dateValidator to match with valid regex before being sent to addEntry
             if(nameValidator() && timeValidator() && dateValidator()) {
                 message = addEntry(type);
+                // once an entry is added, enable these buttons
                 lookUpByDate.setEnabled(true);
                 findAllByDate.setEnabled(true);
                 removeEntry.setEnabled(true);
             } else {
+                // if input is invalid, nothing happens
                 message = "Invalid Input, please try again";
             }
         }
@@ -140,7 +145,9 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             message = findAllEntries();
         }
         if (event.getSource() == removeEntry) {
+            // remove entry
             removeEntry();
+            // if there are no entries disable the buttons and send error message
             if (myAthletes.getNumberOfEntries() == 0) {
                 lookUpByDate.setEnabled(false);
                 findAllByDate.setEnabled(false);
@@ -149,6 +156,9 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             }
         }
         if (event.getSource() == entryType) {
+            /*
+                dynamically show and hide buttons depending on the combobox string
+             */
             if (entryType.getSelectedItem().equals("Cycle")) {
                 labrep.setVisible(false);
                 rep.setVisible(false);
@@ -162,6 +172,7 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
                 terrainType.setVisible(false);
                 tempoType.setVisible(false);
                 where.setVisible(false);
+                // Set the distance label for sprinting to meters, no one sprints kilometers, come on
                 labdist.setText("Distance (m):");
                 labrep.setVisible(true);
                 rep.setVisible(true);
@@ -187,6 +198,7 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     public String addEntry(String what) {
         String message = "Record added\n";
         System.out.println("Adding "+what+" entry to the records");
+        // get all items from textFields
         String n = name.getText();
         int m = Integer.parseInt(month.getText());
         int d = Integer.parseInt(day.getText());
@@ -195,7 +207,9 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         int h = Integer.parseInt(hours.getText());
         int mm = Integer.parseInt(mins.getText());
         int s = Integer.parseInt(secs.getText());
+        // created method to dynamically output different subclasses of Entry
         Entry e = entryTypeGenerator(n, m, d, y, km, h, mm, s);
+        // return boolean to determine if entry was added successfully
         boolean success = myAthletes.addEntry(e);
         if (success) {
             return message;
@@ -204,7 +218,11 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         }
         return message;
     }
-    
+
+    /**
+     * looks up the LAST entry with the given date
+     * @return String - getEntry() for said Entry
+     */
     public String lookupEntry() {
         int m = Integer.parseInt(month.getText());
         int d = Integer.parseInt(day.getText());
@@ -214,6 +232,10 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         return message;
     }
 
+    /**
+     * Create an array of Strings from each element's getEntry();
+     * @return String[] of getEntry messages
+     */
     public String findAllEntries() {
         int m = Integer.parseInt(month.getText());
         int d = Integer.parseInt(day.getText());
@@ -227,12 +249,16 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         return concatEntries;
     }
 
+    /**
+     * Get name, day, month, year from textFields to remove specific entry
+     */
     public void removeEntry() {
         String n = name.getText();
         int m = Integer.parseInt(month.getText());
         int d = Integer.parseInt(day.getText());
         int y = Integer.parseInt(year.getText());
         outputArea.setText("removing entry ...");
+        // Obtain the specific object to be removed
         Entry entryToRemove = myAthletes.lookupEntry(n, d, m, y);
         boolean success = myAthletes.removeEntry(entryToRemove);
         if (success) {
@@ -265,24 +291,42 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         dist.setText(String.valueOf(ent.getDistance()));
     }
 
+    /**
+     * Return Entry subclasses depending on combobox selection
+     * @param n = name
+     * @param m = month
+     * @param d = day
+     * @param y = year
+     * @param km = distance
+     * @param h = hour
+     * @param mm = minutes
+     * @param s = seconds
+     * @return Entry object subclass
+     */
     public Entry entryTypeGenerator(String n, int m, int d, int y, float km, int h, int mm, int s) {
         Entry entry;
         if (entryType.getSelectedItem().equals("Cycle")) {
+            // obtain the additional variables for cycle and pass to constructor
             String terrain = String.valueOf(terrainType.getSelectedItem());
             String tempo = String.valueOf(tempoType.getSelectedItem());
             entry = new CycleEntry(n, d, m, y, h, mm, s, km, terrain, tempo);
         } else if (entryType.getSelectedItem().equals("Sprint")) {
+            // obtain the additional variables for sprint and pass to constructor
             int repetitions = Integer.parseInt(rep.getText());
             int recovery = Integer.parseInt(rec.getText());
-
             entry = new SprintEntry(n, d, m, y, h, mm, s, km, repetitions, recovery);
         } else {
+            // obtain the additional variables for swim and pass to constructor
             String w = String.valueOf(where.getSelectedItem());
             entry = new SwimEntry(n, d, m, y, h, mm, s, km, w);
         }
         return entry;
     }
 
+    /**
+     * Validate name before
+     * @return boolean
+     */
     public boolean nameValidator() {
         boolean proceed = false;
         String n = name.getText();
@@ -298,6 +342,14 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         return proceed;
     }
 
+    /**
+     * Validate time values
+     * *****
+     * Although date and time values loop over if you exceed their ranges (i.e. giving 50 for day loops over past 31 back to the beginning
+     * this method validates the values before being passed to addEntry
+     * *****
+     * @return boolean
+     */
     public boolean timeValidator() {
         boolean proceed = false;
         String h = hours.getText();
@@ -317,6 +369,14 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         return proceed;
     }
 
+    /**
+     * Validate time values
+     * *****
+     * Although date and time values loop over if you exceed their ranges (i.e. giving 50 for day loops over past 31 back to the beginning
+     * this method validates the values before being passed to addEntry
+     * *****
+     * @return boolean
+     */
     public boolean dateValidator() {
         boolean proceed = false;
         String d = day.getText();
